@@ -59,7 +59,10 @@ public class PeopleStorageImpl implements PeopleStorage {
     private Set<Person> filterByUCO(Set<String> ucoValues) {
         Set<Person> tmpSet = new HashSet<>();
         for(String uco: ucoValues) {
-            tmpSet.add(people.get(Long.parseLong(uco)));
+            try {
+                tmpSet.add(people.get(Long.parseLong(uco)));
+            } catch (NumberFormatException ex) {
+            }
         }
         return tmpSet;
     }
